@@ -6,6 +6,6 @@ import (
 )
 
 // Servicio para obtener todos los almacenes
-func GetAllAlmacenesService() ([]models.Almacen, error) {
+func GetAllAlmacenesService() ([]models.Almacenes, error) {
 	return repositories.GetAllAlmacenes()
 }

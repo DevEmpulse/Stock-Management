@@ -1,21 +1,19 @@
 package repositories
 
 import (
-	"fmt"
+	//"fmt"
 
 	"github.com/DevEmpulse/Stock-Management.git/internal/database"
 	models "github.com/DevEmpulse/Stock-Management.git/internal/models/almacen"
 )
 
-func GetAllAlmacenes() ([]models.Almacen, error) {
-	var almacenes []models.Almacen
+func GetAllAlmacenes() ([]models.Almacenes, error) {
+	var almacenes []models.Almacenes
 
 	// Buscar en la base de datos
 	result := database.DB.Find(&almacenes)
-	fmt.Println(result)
 	if result.Error != nil {
 		return nil, result.Error
 	}
-	fmt.Println(result.Error)
 	return almacenes, nil
 }
