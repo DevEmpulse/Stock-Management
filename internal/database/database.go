@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"path/filepath"
 
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
@@ -14,16 +13,8 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	// Buscar la ruta del archivo .env en la raíz del proyecto
-	rootDir, err := filepath.Abs("../../")
-	if err != nil {
-		log.Fatal("Error obteniendo ruta raíz del proyecto:", err)
-	}
-
-	envPath := filepath.Join(rootDir, ".env")
-
 	// Cargar variables de entorno
-	if err := godotenv.Load(envPath); err != nil {
+	if err := godotenv.Load("../../.env"); err != nil {
 		log.Fatal("Error al cargar el archivo .env:", err)
 	}
 
@@ -42,8 +33,11 @@ func Connect() {
 		log.Fatal("No se pudo conectar a la base de datos:", err)
 	}
 
+	// ✅ ASIGNAR `db` A `DB` PARA QUE SE PUEDA USAR DESDE OTROS ARCHIVOS
+	DB = db
+
 	// Verificar la conexión
-	sqlDB, err := db.DB()
+	sqlDB, err := DB.DB()
 	if err != nil {
 		log.Fatal("Error al obtener la conexión de base de datos:", err)
 	}

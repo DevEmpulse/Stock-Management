@@ -11,3 +11,7 @@ type Almacen struct {
 	Nombre     string       `json:"nombre"`
 	Direccion  string       `json:"direccion"`
 }
+
+func (Almacen) TableName() string {
+	return "almacenes"
+}
