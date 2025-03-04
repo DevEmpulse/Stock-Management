@@ -1,52 +1,18 @@
-root = "."
-testdata_dir = "testdata"
+# Configuración de Air
+root = "."  # Directorio raíz del proyecto
 tmp_dir = "tmp"
 
 [build]
-  args_bin = []
-  bin = "tmp\\main.exe"
-  cmd = "go build -o ./tmp/main.exe ."
-  delay = 1000
-  exclude_dir = ["assets", "tmp", "vendor", "testdata"]
-  exclude_file = []
-  exclude_regex = ["_test.go"]
-  exclude_unchanged = false
-  follow_symlink = false
-  full_bin = ""
-  include_dir = []
-  include_ext = ["go", "tpl", "tmpl", "html"]
-  include_file = []
-  kill_delay = "0s"
-  log = "build-errors.log"
-  poll = false
-  poll_interval = 0
-  post_cmd = []
-  pre_cmd = []
-  rerun = false
-  rerun_delay = 500
-  send_interrupt = false
-  stop_on_error = false
+  cmd = "go build -o tmp/main.exe cmd/api/main.go && tmp/main.exe"
+  bin = "tmp/main.exe"
+  full_bin = "tmp/main.exe"
 
-[color]
-  app = ""
-  build = "yellow"
-  main = "magenta"
-  runner = "green"
-  watcher = "cyan"
+# Ignorar archivos innecesarios
+[watcher]
+  dirs = ["cmd/api", "internal"]
+  ignore_dirs = ["tmp", "vendor", "node_modules"]
+  extensions = ["go", "html", "env"]
 
+# Configuración de logs
 [log]
-  main_only = false
-  silent = false
-  time = false
-
-[misc]
-  clean_on_exit = false
-
-[proxy]
-  app_port = 0
-  enabled = false
-  proxy_port = 0
-
-[screen]
-  clear_on_rebuild = false
-  keep_scroll = true
+  time = true
