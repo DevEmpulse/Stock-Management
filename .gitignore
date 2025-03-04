@@ -1,0 +1,52 @@
+# Archivos binarios y compilados
+*.exe
+*.out
+*.o
+*.so
+*.dll
+*.a
+*.lo
+
+# Carpetas generadas por Go
+/bin/
+/pkg/
+/dist/
+/build/
+
+# Caché de módulos
+go.sum
+go.work
+go.work.sum
+
+# Archivos de dependencias y caché
+*.mod
+*.sum
+vendor/
+
+# Configuración de entorno y credenciales
+.env
+.env.local
+.env.development
+.env.production
+.env.*.local
+
+# Logs y depuración
+*.log
+*.test
+*.prof
+*.trace
+
+# Archivos de depuración
+debug/
+dump.rdb
+*.swp
+*.swo
+
+# Configuración de IDEs y editores
+.vscode/
+.idea/
+*.iml
+
+# Archivos de sistema (Mac y Windows)
+.DS_Store
+Thumbs.db
