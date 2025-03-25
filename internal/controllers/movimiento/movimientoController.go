@@ -21,7 +21,7 @@ func GetAllMovimientosByIdUser(c *fiber.Ctx) error {
 
 	if err != nil {
 		return c.Status(500).JSON(fiber.Map{
-			"error": "Error al obtener las Movimientos de este usuario",
+			"error": "Error al obtener los Movimientos de este usuario",
 		})
 	}
 	return c.JSON(movimientos)
@@ -47,7 +47,7 @@ func CreateMovimiento(c *fiber.Ctx) error {
 
 	if err := services.CreateMovimiento(&newMovimiento); err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error": "No se pudo crear la Movimiento",
+			"error": "No se pudo crear el Movimiento",
 		})
 	}
 	return c.Status(fiber.StatusCreated).JSON(newMovimiento)
@@ -59,7 +59,7 @@ func UpdateMovimiento(c *fiber.Ctx) error {
 	id, err := strconv.ParseInt(idMovimientoParams, 10, 32)
 
 	if err != nil {
-		return c.Status(400).JSON(fiber.Map{"error": "Id de la Movimiento inválido"})
+		return c.Status(400).JSON(fiber.Map{"error": "Id del Movimiento inválido"})
 	}
 
 	var updateMovimiento models.Movimientos
@@ -87,7 +87,7 @@ func DeleteMovimiento(c *fiber.Ctx) error {
 
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{
-			"error": "ID almacen inválido",
+			"error": "ID movimiento inválido",
 		})
 	}
 
@@ -97,6 +97,6 @@ func DeleteMovimiento(c *fiber.Ctx) error {
 		})
 	}
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"message": "Movimiento borrada correctamente",
+		"message": "Movimiento borrado correctamente",
 	})
 }

@@ -87,7 +87,7 @@ func DeleteCategoria(c *fiber.Ctx) error {
 
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{
-			"error": "ID almacen inválido",
+			"error": "ID categoria inválido",
 		})
 	}
 

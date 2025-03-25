@@ -13,6 +13,6 @@ type Movimientos struct {
 	PrecioTotal float64             `json:"precio_total"`
 	FechaMov    string              `json:"fecha_mov"`
 	ID_users    uint                `json:"id_users"`
-	User        models.Users        `json:"user" gorm:"foreignKey:ID_users;references:ID"`
+	User        models.Users        `json:"user" gorm:"foreignKey:ID_users;references:ID_users"`
 	Cantidad    int                 `json:"cantidad"`
 }

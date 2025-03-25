@@ -4,6 +4,7 @@ import (
 	"github.com/DevEmpulse/Stock-Management.git/internal/routes/almacen"
 	"github.com/DevEmpulse/Stock-Management.git/internal/routes/categoria"
 	"github.com/DevEmpulse/Stock-Management.git/internal/routes/movimiento"
+	"github.com/DevEmpulse/Stock-Management.git/internal/routes/producto"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -13,4 +14,5 @@ func SetupRoutes(app *fiber.App) {
 	almacen.SetupAlmacenRoutes(api)
 	categoria.SetupCategoriaRoutes(api)
 	movimiento.SetupMovimientoRoutes(api)
+	producto.SetupProductoRoutes(api)
 }
