@@ -1,0 +1,1 @@
+export { default as Hedear } from './Hedear';

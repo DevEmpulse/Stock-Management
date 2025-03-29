@@ -50,3 +50,6 @@ dump.rdb
 # Archivos de sistema (Mac y Windows)
 .DS_Store
 Thumbs.db
+
+class-list.json
+pid
