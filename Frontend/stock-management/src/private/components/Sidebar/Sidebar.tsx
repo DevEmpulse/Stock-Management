@@ -17,7 +17,7 @@ export default function Sidebar({ children }: SidebarProps) {
 
   return (
     <aside className="h-screen">
-      <nav className="h-full flex flex-col bg-blue-800 border-r shadow-sm">
+      <nav className="h-full flex flex-col bg-blue-950 border-r shadow-sm">
         <div className="p-4 pb-2 flex justify-between items-center">
           <img
             src={logo}

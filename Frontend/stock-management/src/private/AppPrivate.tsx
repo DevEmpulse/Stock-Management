@@ -8,7 +8,7 @@ import { Hedear } from "./components/Hedear"
 function AppPrivade() {
     return (
         
-        <div className="bg-blue-400">
+        
             <div className="flex z-10">
             <Sidebar>
                 <SidebarItem icon={<LayoutDashboard size={30} />} text="Dashboard" active />
@@ -21,14 +21,14 @@ function AppPrivade() {
                 <SidebarItem icon={<LifeBuoy size={20} />} text="Help" />
             </Sidebar>
             <div className="flex flex-col flex-1">
-                <Hedear title="Dashboard" />
-                <div className="bg-blue-400 flex-1 p-4">
+                <Hedear title="Dashboard" nombre="Diego Farid" email="name@gmail.com"/>
+                <hr className=""/>
+                <div className="bg-blue-800 flex-1 p-4">
                     {/* Aquí irá el contenido de cada página */}
                     <h1 className="text-white text-2xl">Bienvenido al Dashboard</h1>
                 </div>
             </div>
             </div>
-        </div>
 
     )
 }
