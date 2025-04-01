@@ -1,10 +1,15 @@
 package models
 
+import (
+	"time"
+)
+
 type Users struct {
-	ID_users   uint   `json:"id_users" gorm:"primaryKey"`
-	Nombre     string `json:"nombre"`
-	Nickname   string `json:"nickname" gorm:"unique"`
-	Logo       string `json:"logo"`
-	Email      string `json:"email" gorm:"unique"`
-	Contrasena string `json:"-"` // Excluir de la respuesta JSON
+	ID_users   uint      `json:"id_users" gorm:"primaryKey"`
+	Nombre     string    `json:"nombre"`
+	Nickname   string    `json:"nickname" gorm:"unique"`
+	Logo       string    `json:"logo"`
+	Email      string    `json:"email" gorm:"unique"`
+	Contrasena string    `json:"-"` // Excluir de la respuesta JSON
+	CreatedAt  time.Time `json:"created_at"`
 }
