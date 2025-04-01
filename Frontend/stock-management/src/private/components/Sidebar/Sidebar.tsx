@@ -1,5 +1,5 @@
 import { ChevronFirst, ChevronLast } from "lucide-react";
-import logo from "/src/private/assets/logo.png";
+import logo from "/src/assets/logo.png";
 import { createContext, useContext, useState, ReactNode } from "react";
 
 interface SidebarContextType {

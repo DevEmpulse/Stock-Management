@@ -2,13 +2,17 @@ import { LayoutDashboard, LifeBuoy, PackageSearch, Settings, TrendingDown, Trend
 import { SidebarItem } from "./components"
 import { Sidebar } from "./components/Sidebar"
 import { Hedear } from "./components/Hedear"
+import { useSelector } from "react-redux"
+import { RootState } from "@/store"
 
 
 
 function AppPrivade() {
+        const {user}= useSelector((state:RootState)=>state.auth)
+        console.log({user})
     return (
         
-        
+            
             <div className="flex z-10">
             <Sidebar>
                 <SidebarItem icon={<LayoutDashboard size={30} />} text="Dashboard" active />
@@ -21,7 +25,7 @@ function AppPrivade() {
                 <SidebarItem icon={<LifeBuoy size={20} />} text="Help" />
             </Sidebar>
             <div className="flex flex-col flex-1">
-                <Hedear title="Dashboard" nombre="Diego Farid" email="name@gmail.com"/>
+                <Hedear title="Dashboard" nombre={user?.nombre || 'Usuario'} email={user?.email||"name@gmail.com"}/>
                 <hr className=""/>
                 <div className="bg-blue-800 flex-1 p-4">
                     {/* Aquí irá el contenido de cada página */}

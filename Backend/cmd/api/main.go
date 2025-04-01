@@ -9,6 +9,7 @@ import (
 	"github.com/DevEmpulse/Stock-Management.git/internal/routes"
 	services "github.com/DevEmpulse/Stock-Management.git/internal/services/user"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 func main() {
@@ -22,7 +23,11 @@ func main() {
 
 	// Configuración de Fiber
 	app := fiber.New()
-
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "http://localhost:5173", // Cambia esto al dominio de tu frontend
+		AllowMethods: "GET,POST,PUT,DELETE",
+		AllowHeaders: "Origin, Content-Type, Authorization",
+	}))
 	// Configurar rutas con el controlador
 	routes.SetupRoutes(app, authController)
 

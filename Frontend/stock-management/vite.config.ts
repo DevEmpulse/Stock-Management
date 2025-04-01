@@ -10,4 +10,13 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000', // Dirección de tu backend
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 })
