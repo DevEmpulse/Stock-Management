@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/Frontend/stock-management/public/fonts/Poppins-Medium.ttf);
+    font-weight: 400;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/Frontend/stock-management/public/fonts/Poppins-Black.ttf);
+    font-weight: 700;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/Frontend/stock-management/public/fonts/Poppins-Light.ttf);
+    font-weight: 300;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/Frontend/stock-management/public/fonts/Poppins-Bold.ttf);
+    font-weight: 600;
+    font-display: swap;
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
