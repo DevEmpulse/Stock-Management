@@ -27,6 +27,46 @@ func GetAllMovimientosByIdUser(c *fiber.Ctx) error {
 	return c.JSON(movimientos)
 }
 
+func GetEgresosByIdUser(c *fiber.Ctx) error {
+	idUserParam := c.Params("id_user")
+
+	idUser, err := strconv.ParseInt(idUserParam, 10, 32)
+	if err != nil {
+		return c.Status(400).JSON(fiber.Map{
+			"error": "Id de Usuario inválido",
+		})
+	}
+
+	egresos, err := services.GetEgresosByIdUser(uint(idUser))
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{
+			"error": "Error al obtener los egresos de este usuario",
+		})
+	}
+
+	return c.JSON(egresos)
+}
+
+func GetIngresosByIdUser(c *fiber.Ctx) error {
+	idUserParam := c.Params("id_user")
+
+	idUser, err := strconv.ParseInt(idUserParam, 10, 32)
+	if err != nil {
+		return c.Status(400).JSON(fiber.Map{
+			"error": "Id de Usuario inválido",
+		})
+	}
+
+	ingresos, err := services.GetIngresosByIdUser(uint(idUser))
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{
+			"error": "Error al obtener los ingresos de este usuario",
+		})
+	}
+
+	return c.JSON(ingresos)
+}
+
 func CreateMovimiento(c *fiber.Ctx) error {
 	idUserParam := c.Params("id_user")
 
