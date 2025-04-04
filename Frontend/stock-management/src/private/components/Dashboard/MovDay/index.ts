@@ -1,0 +1,1 @@
+export { default as MovDay } from './MovDay';
