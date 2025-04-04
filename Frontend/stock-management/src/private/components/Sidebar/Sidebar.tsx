@@ -16,7 +16,7 @@ export default function Sidebar({ children }: SidebarProps) {
   const [expanded, setExpanded] = useState(true);
 
   return (
-    <aside className="h-screen">
+    <aside className="h-auto">
       <nav className="h-full flex flex-col bg-blue-950 border-r shadow-sm">
         <div className="p-4 pb-2 flex justify-between items-center">
           <img
@@ -31,7 +31,7 @@ export default function Sidebar({ children }: SidebarProps) {
             onClick={() => setExpanded((curr) => !curr)}
             className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
           >
-            {expanded ? <ChevronFirst /> : <ChevronLast />}
+            {expanded ? <ChevronFirst className="cursor-pointer" /> : <ChevronLast className="cursor-pointer"/>}
           </button>
         </div>
 
