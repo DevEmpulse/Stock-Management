@@ -9,6 +9,14 @@ func GetAllMovimientosByIdUserService(user uint) ([]models.Movimientos, error) {
 	return repositories.GetAllMovimientosByIdUser(user)
 }
 
+func GetIngresosByIdUser(user uint) ([]models.Movimientos, error) {
+	return repositories.GetAllMovimientosByIdUser(user)
+}
+
+func GetEgresosByIdUser(user uint) ([]models.Movimientos, error) {
+	return repositories.GetAllMovimientosByIdUser(user)
+}
+
 func CreateMovimiento(newMovimiento *models.Movimientos) error {
 	return repositories.CreateMovimiento(newMovimiento)
 }
