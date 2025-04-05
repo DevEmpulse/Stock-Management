@@ -9,11 +9,11 @@ func GetAllMovimientosByIdUserService(user uint) ([]models.Movimientos, error) {
 	return repositories.GetAllMovimientosByIdUser(user)
 }
 
-func GetIngresosByIdUser(user uint) ([]models.Movimientos, error) {
+func GetCompraByIdUser(user uint) ([]models.Movimientos, error) {
 	return repositories.GetAllMovimientosByIdUser(user)
 }
 
-func GetEgresosByIdUser(user uint) ([]models.Movimientos, error) {
+func GetVentaByIdUser(user uint) ([]models.Movimientos, error) {
 	return repositories.GetAllMovimientosByIdUser(user)
 }
 

@@ -25,34 +25,34 @@ func GetAllMovimientosByIdUser(user uint) ([]models.Movimientos, error) {
 	return movimientosUser, nil
 }
 
-func GetEgresosByIdUser(userID uint) ([]models.Movimientos, error) {
-	var egresos []models.Movimientos
+func GetVentaByIdUser(userID uint) ([]models.Movimientos, error) {
+	var venta []models.Movimientos
 
 	result := database.DB.
 		Preload("User").
 		Preload("Producto").
-		Where("id_users = ? AND tipo_de_mov = ?", userID, "egreso").
-		Find(&egresos)
+		Where("id_users = ? AND tipo_de_mov = ?", userID, "venta").
+		Find(&venta)
 
 	if result.Error != nil {
 		return nil, result.Error
 	}
-	return egresos, nil
+	return venta, nil
 }
 
-func GetIngresosByIdUser(userID uint) ([]models.Movimientos, error) {
-	var ingresos []models.Movimientos
+func GetCompraByIdUser(userID uint) ([]models.Movimientos, error) {
+	var compra []models.Movimientos
 
 	result := database.DB.
 		Preload("User").
 		Preload("Producto").
-		Where("id_users = ? AND tipo_de_mov = ?", userID, "ingreso").
-		Find(&ingresos)
+		Where("id_users = ? AND tipo_de_mov = ?", userID, "compra").
+		Find(&compra)
 
 	if result.Error != nil {
 		return nil, result.Error
 	}
-	return ingresos, nil
+	return compra, nil
 }
 
 func DeleteMovimiento(id uint) error {
