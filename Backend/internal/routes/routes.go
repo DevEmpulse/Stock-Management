@@ -3,7 +3,6 @@ package routes
 
 import (
 	controllers "github.com/DevEmpulse/Stock-Management.git/internal/controllers/user"
-	"github.com/DevEmpulse/Stock-Management.git/internal/routes/almacen"
 	"github.com/DevEmpulse/Stock-Management.git/internal/routes/categoria"
 	"github.com/DevEmpulse/Stock-Management.git/internal/routes/movimiento"
 	"github.com/DevEmpulse/Stock-Management.git/internal/routes/producto"
@@ -18,7 +17,6 @@ func SetupRoutes(app *fiber.App, authController *controllers.AuthController) {
 	user.SetupUserRoutes(api, authController)
 
 	// Configurar otras rutas
-	almacen.SetupAlmacenRoutes(api)
 	categoria.SetupCategoriaRoutes(api)
 	movimiento.SetupMovimientoRoutes(api)
 	producto.SetupProductoRoutes(api)
