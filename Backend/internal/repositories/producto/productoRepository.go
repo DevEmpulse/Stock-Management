@@ -6,7 +6,7 @@ import (
 )
 
 func CreateProducto(newProducto *models.Productos) error {
-	result := database.DB.Create(newProducto)
+	result := database.DB.Create(newProducto) // que al crear un producto cree un movimiento
 	return result.Error
 }
 
@@ -15,7 +15,7 @@ func GetAllProductosByIdUser(user uint) ([]models.Productos, error) {
 
 	result := database.DB.
 		Preload("User").
-		Preload("Categoria"). // falta agragegar el de proveedores aca
+		Preload("Categoria"). 
 		Where("id_users = ?", user).
 		Find(&ProductosUser)
 
@@ -37,6 +37,6 @@ func UpdateProducto(id uint, updatedProducto *models.Productos) error {
 	if result.Error != nil {
 		return result.Error
 	}
-	result = database.DB.Model(&existeProducto).Updates(updatedProducto)
+	result = database.DB.Model(&existeProducto).Updates(updatedProducto) // que al agregar mas productos cree un movimiento
 	return result.Error
 }
