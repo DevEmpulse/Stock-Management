@@ -6,6 +6,7 @@ import (
 	"github.com/DevEmpulse/Stock-Management.git/internal/routes/categoria"
 	"github.com/DevEmpulse/Stock-Management.git/internal/routes/movimiento"
 	"github.com/DevEmpulse/Stock-Management.git/internal/routes/producto"
+	proveedor "github.com/DevEmpulse/Stock-Management.git/internal/routes/proveedor"
 	user "github.com/DevEmpulse/Stock-Management.git/internal/routes/user"
 	"github.com/gofiber/fiber/v2"
 )
@@ -20,4 +21,5 @@ func SetupRoutes(app *fiber.App, authController *controllers.AuthController) {
 	categoria.SetupCategoriaRoutes(api)
 	movimiento.SetupMovimientoRoutes(api)
 	producto.SetupProductoRoutes(api)
+	proveedor.SetupProveedorRoutes(api)
 }
