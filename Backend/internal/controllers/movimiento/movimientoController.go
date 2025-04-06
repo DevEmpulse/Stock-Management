@@ -27,7 +27,7 @@ func GetAllMovimientosByIdUser(c *fiber.Ctx) error {
 	return c.JSON(movimientos)
 }
 
-func GetEgresosByIdUser(c *fiber.Ctx) error {
+func GetVentaByIdUser(c *fiber.Ctx) error {
 	idUserParam := c.Params("id_user")
 
 	idUser, err := strconv.ParseInt(idUserParam, 10, 32)
@@ -37,17 +37,17 @@ func GetEgresosByIdUser(c *fiber.Ctx) error {
 		})
 	}
 
-	egresos, err := services.GetEgresosByIdUser(uint(idUser))
+	venta, err := services.GetVentaByIdUser(uint(idUser))
 	if err != nil {
 		return c.Status(500).JSON(fiber.Map{
-			"error": "Error al obtener los egresos de este usuario",
+			"error": "Error al obtener las ventas de este usuario",
 		})
 	}
 
-	return c.JSON(egresos)
+	return c.JSON(venta)
 }
 
-func GetIngresosByIdUser(c *fiber.Ctx) error {
+func GetCompraByIdUser(c *fiber.Ctx) error {
 	idUserParam := c.Params("id_user")
 
 	idUser, err := strconv.ParseInt(idUserParam, 10, 32)
@@ -57,14 +57,14 @@ func GetIngresosByIdUser(c *fiber.Ctx) error {
 		})
 	}
 
-	ingresos, err := services.GetIngresosByIdUser(uint(idUser))
+	compra, err := services.GetCompraByIdUser(uint(idUser))
 	if err != nil {
 		return c.Status(500).JSON(fiber.Map{
-			"error": "Error al obtener los ingresos de este usuario",
+			"error": "Error al obtener las compras de este usuario",
 		})
 	}
 
-	return c.JSON(ingresos)
+	return c.JSON(compra)
 }
 
 func CreateMovimiento(c *fiber.Ctx) error {

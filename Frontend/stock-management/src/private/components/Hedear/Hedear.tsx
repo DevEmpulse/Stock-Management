@@ -18,12 +18,13 @@ export default function Hedear({ title, nombre, email }: Props) {
 
     return (
 
-        <Navbar fluid className="bg-blue-800 dark:bg-blue-800">
+        <Navbar fluid className="bg-white dark:bg-white">
             <NavbarBrand>
-                <span className="self-center whitespace-nowrap text-xl font-bold dark:text-white text-white">{title}</span>
+                <span className="self-center whitespace-nowrap text-xl font-bold dark:text-black text-black">{title}</span>
+                <button className="bg-green-600 text-white ml-4 rounded-sm cursor-pointer p-2">+Agregar Venta</button>
             </NavbarBrand>
             <div className="flex md-order-2 mr-6">
-                <h2 className="self-center whitespace-normal text-xl font-medium mr-2.5 text-white">Hola, {nombre}</h2>
+                <h2 className="self-center whitespace-normal text-xl font-medium mr-2.5 text-black">Hola, {nombre}</h2>
                 <Dropdown
                     arrowIcon={false}
                     inline

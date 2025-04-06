@@ -81,9 +81,9 @@ func UpdateProducto(c *fiber.Ctx) error {
 }
 
 func DeleteProducto(c *fiber.Ctx) error {
-	idProductoParams := c.Params("id_prod")
+	idProductoParams := c.Params("id_producto")
 
-	id, err := strconv.ParseUint(idProductoParams, 10, 32)
+	id, err := strconv.ParseInt(idProductoParams, 10, 32)
 
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{
