@@ -14,9 +14,7 @@ func GetAllProductosByIdUser(user uint) ([]models.Productos, error) {
 	var ProductosUser []models.Productos
 
 	result := database.DB.
-		Preload("User").
-		Preload("Categoria"). 
-		Where("id_users = ?", user).
+		Where("id_user = ?", user).
 		Find(&ProductosUser)
 
 	if result.Error != nil {
