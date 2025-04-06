@@ -20,7 +20,7 @@ function AppPrivade() {
 
         <div className="flex min-h-screen z-10">
             <Sidebar>
-            <SidebarItem icon={<LayoutDashboard size={30} />} text="Dashboard" active={activePage === "dashboard"} onClick={() => setActivePage("dashboard")} />
+            <SidebarItem icon={<LayoutDashboard size={20} />} text="Dashboard" active={activePage === "dashboard"} onClick={() => setActivePage("dashboard")} />
                 <SidebarCategory category="Movimientos"/>
                 <SidebarItem icon={<TrendingUp size={20} />} text="Ventas"/>
                 <SidebarItem icon={<ShoppingCart size={20} />} text="Compras" />

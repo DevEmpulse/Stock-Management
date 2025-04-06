@@ -4,6 +4,7 @@ import { useFetch } from "@/private/hooks";
 import { DataTable } from "../DataTable";
 import { columns } from "./";
 
+
 const url = "http://127.0.0.1:3000/api/producto/3";
 
 interface DataProductos {

@@ -23,6 +23,10 @@ export const columns: ColumnDef<Payment>[] = [
     header: "Nombre",
   },
   {
+    accessorKey:"codigo_de_barras",
+    header: "Codigo de barra"
+  },
+  {
     accessorKey: "stock",
     header: "Stock",
   },
@@ -36,6 +40,6 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: "precio_venta",
-    header: "Precio de venta",
+    header: "Precio de venta ",
   },
 ]
