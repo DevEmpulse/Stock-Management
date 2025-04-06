@@ -8,6 +8,8 @@ import Dashboard from "./components/Dashboard/Dashboard"
 
 import { useState } from "react"
 import Productos from "./components/Productos/Productos"
+import Proveedor from "./components/Proveedor/Proveedor"
+import Categoria from "./components/Categoria/Categoria"
 
 
 
@@ -30,8 +32,8 @@ function AppPrivade() {
                 <SidebarItem icon={<DollarSign size={20}/>} text="Balances"/>
                 <SidebarCategory category="Invetario"/>
                 <SidebarItem icon={<PackageSearch size={20} />} text="Productos" active={activePage ==="productos"} onClick={() => setActivePage("productos")} />
-                <SidebarItem icon={<Handshake size={20} />} text="Proveedores" />
-                <SidebarItem icon={<BookOpenCheck size={20} />} text="Categorias" />
+                <SidebarItem icon={<Handshake size={20} />} text="Proveedores"  active={activePage ==="proveedores"} onClick={() => setActivePage("proveedores")}/>
+                <SidebarItem icon={<BookOpenCheck size={20} />} text="Categorias" active={activePage ==="categorias"} onClick={() => setActivePage("categorias")}/>
             </Sidebar>
             <div className="flex flex-col flex-1">
                 <Hedear title="Dashboard" nombre={user?.nombre || 'Usuario'} email={user?.email || "name@gmail.com"} />
@@ -39,6 +41,8 @@ function AppPrivade() {
                 <div className="bg-white flex-1">
                     {activePage === "dashboard" && <Dashboard />}
                     {activePage === "productos" && <Productos />}
+                    {activePage === "proveedores" && <Proveedor />}
+                    {activePage === "categorias" && <Categoria />}
                 </div>
             </div>
         </div>

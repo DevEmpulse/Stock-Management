@@ -2,26 +2,14 @@
 
 import { useFetch } from "@/private/hooks";
 import { DataTable } from "../DataTable";
-import { columns } from "./";
+import { columns, Payment } from "./";
 
 
 const url = "http://127.0.0.1:3000/api/producto/3";
 
-interface DataProductos {
-  id_prod: number;
-  nombre: string;
-  codigo_de_barras: string;
-  imagen?: string;
-  stock: number;
-  descripcion: string;
-  precio_compra: number;
-  precio_venta: number;
-  fecha_creacion: string;
-  fecha_actualizacion: string;
-}
 
 const Productos = () => {
-  const { data, error, loading } = useFetch<DataProductos[]>(url);
+  const { data, error, loading } = useFetch<Payment[]>(url);
 
   console.log(data);
 
@@ -39,8 +27,18 @@ const Productos = () => {
   const safeData = data ?? [];
 
   return (
-    <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={safeData} />
+    <div className="container mx-auto py-4">
+      <h1 className="font-bold text-xl ml-4">Lista de Productos</h1>
+      <DataTable
+      columns={columns}
+      data={safeData}
+      filters={[
+        { columnKey: "nombre", placeholder: "Filtrar por nombre" },
+        { columnKey: "codigo_de_barras", placeholder: "Filtrar por codigo de barra" },
+      ]}
+      buttonText="Agregar producto"
+      buttonClassName="bg-green-500 text-white cursor-pointer"
+    />
     </div>
   );
 };
