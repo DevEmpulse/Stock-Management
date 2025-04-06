@@ -1,34 +1,33 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
 @plugin "flowbite-react/plugin/tailwindcss";
 @source "../.flowbite-react/class-list.json";
 
 @font-face {
     font-family: "Poppins";
-    src: url(/Frontend/stock-management/public/fonts/Poppins-Medium.ttf);
+    src: url(/fonts/Poppins-Medium.ttf);
     font-weight: 400;
     font-display: swap;
 }
 
 @font-face {
     font-family: "Poppins";
-    src: url(/Frontend/stock-management/public/fonts/Poppins-Black.ttf);
+    src: url(/fonts/Poppins-Black.ttf);
     font-weight: 700;
     font-display: swap;
 }
 
 @font-face {
     font-family: "Poppins";
-    src: url(/Frontend/stock-management/public/fonts/Poppins-Light.ttf);
+    src: url(/fonts/Poppins-Light.ttf);
     font-weight: 300;
     font-display: swap;
 }
 
 @font-face {
     font-family: "Poppins";
-    src: url(/Frontend/stock-management/public/fonts/Poppins-Bold.ttf);
+    src: url(/public/fonts/Poppins-Bold.ttf);
     font-weight: 600;
     font-display: swap;
 }
@@ -152,3 +151,7 @@ html {
     @apply bg-background text-foreground;
     }
 }
+
+html, body, #root {
+    height: 100%;
+  }
