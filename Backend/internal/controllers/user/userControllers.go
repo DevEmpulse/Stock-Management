@@ -17,8 +17,10 @@ func NewAuthController(authService *services.AuthService) *AuthController {
 }
 
 func (ac *AuthController) GetUser(c *fiber.Ctx) error {
-	userID := c.Locals("user").(uint)
-
+	userID, ok := c.Locals("userId").(uint)
+	if !ok {
+		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Invalid user ID"})
+	}
 	user, err := ac.AuthService.UserRepo.FindUserByID(userID)
 	if err != nil {
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{"error": "Usuario no encontrado"})

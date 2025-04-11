@@ -2,6 +2,7 @@ package services
 
 import (
 	"errors"
+	"os"
 	"time"
 
 	users "github.com/DevEmpulse/Stock-Management.git/internal/models/users"
@@ -10,7 +11,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-var jwtSecret = []byte("secreto") // Cambia el secreto por uno más seguro
+var jwtSecret = []byte(os.Getenv("JWT_SECRET")) // Cambia el secreto por uno más seguro
 
 type AuthService struct {
 	UserRepo *repositories.UserRepository
