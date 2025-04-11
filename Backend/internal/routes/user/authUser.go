@@ -11,6 +11,7 @@ func SetupUserRoutes(api fiber.Router, authController *controllers.AuthControlle
 
 	userRoutes.Post("/register", authController.Register)
 	userRoutes.Post("/login", authController.Login)
+	userRoutes.Get("/getUser", middlewares.JWTMiddleware(), authController.GetUser)
 	userRoutes.Put("/:id", middlewares.JWTMiddleware(), authController.UpdateUser)
 	userRoutes.Delete("/:id", middlewares.JWTMiddleware(), authController.DeleteUser)
 }

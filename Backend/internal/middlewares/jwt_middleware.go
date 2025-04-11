@@ -21,7 +21,10 @@ func JWTMiddleware() fiber.Handler {
 			return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Unauthorized"})
 		}
 
-		c.Locals("user", token)
+		claims := token.Claims.(jwt.MapClaims)
+		userID := uint(claims["id"].(float64)) // ⚠️ importante: convertir de float64 a uint
+
+		c.Locals("user", userID)
 		return c.Next()
 	}
 }

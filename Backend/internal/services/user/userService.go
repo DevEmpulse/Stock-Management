@@ -34,16 +34,16 @@ func (s *AuthService) Register(user *users.Users) error {
 }
 
 // Iniciar sesión con email y contraseña
-func (s *AuthService) Login(email, password string) (string, error) {
+func (s *AuthService) Login(email, password string) (*users.Users, string, error) {
 	// Buscar usuario por email
 	user, err := s.UserRepo.FindUserByEmail(email)
 	if err != nil {
-		return "", errors.New("credenciales inválidas")
+		return nil, "", errors.New("credenciales inválidas")
 	}
 
 	// Comparar la contraseña ingresada con la almacenada
-	if bcrypt.CompareHashAndPassword([]byte(user.Contrasena), []byte(password)) != nil {
-		return "", errors.New("credenciales inválidas")
+	if err := bcrypt.CompareHashAndPassword([]byte(user.Contrasena), []byte(password)); err != nil {
+		return nil, "", errors.New("credenciales inválidas")
 	}
 
 	// Crear token JWT
@@ -55,11 +55,11 @@ func (s *AuthService) Login(email, password string) (string, error) {
 	// Firmar el token con el secreto
 	tokenString, err := token.SignedString(jwtSecret)
 	if err != nil {
-		return "", err
+		return nil, "", err
 	}
 
-	// Retornar el token
-	return tokenString, nil
+	// Retornar el usuario y el token
+	return user, tokenString, nil
 }
 
 // Eliminar usuario

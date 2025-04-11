@@ -16,6 +16,21 @@ func NewAuthController(authService *services.AuthService) *AuthController {
 	return &AuthController{AuthService: authService}
 }
 
+func (ac *AuthController) GetUser(c *fiber.Ctx) error {
+	userID := c.Locals("user").(uint)
+
+	user, err := ac.AuthService.UserRepo.FindUserByID(userID)
+	if err != nil {
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{"error": "Usuario no encontrado"})
+	}
+
+	return c.JSON(fiber.Map{
+		"id":     user.ID_users,
+		"email":  user.Email,
+		"nombre": user.Nombre,
+	})
+}
+
 func (ac *AuthController) Register(c *fiber.Ctx) error {
 	user := new(users.Users)
 	if err := c.BodyParser(user); err != nil {
@@ -39,12 +54,21 @@ func (ac *AuthController) Login(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid input"})
 	}
 
-	token, err := ac.AuthService.Login(input.Email, input.Password)
+	// Obtener el usuario y el token del servicio
+	user, token, err := ac.AuthService.Login(input.Email, input.Password)
 	if err != nil {
 		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Invalid credentials"})
 	}
 
-	return c.JSON(fiber.Map{"token": token})
+	// Devolver token y datos del usuario
+	return c.JSON(fiber.Map{
+		"token": token,
+		"user": fiber.Map{
+			"id":     user.ID_users,
+			"email":  user.Email,
+			"nombre": user.Nombre,
+		},
+	})
 }
 
 func (ac *AuthController) DeleteUser(c *fiber.Ctx) error {
